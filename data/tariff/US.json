@@ -1,0 +1,47 @@
+[
+  {
+    "hsCode": "85176200",
+    "description": "Machines for the reception, conversion and transmission or regeneration of voice, images or other data, including switching and routing apparatus",
+    "dutyRate": 0,
+    "vatRate": 0,
+    "source": "USITC HTS",
+    "sourceVersion": "HTS 2026 Basic Edition",
+    "sourceUrl": "https://hts.usitc.gov/",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-us-2026-11-04",
+    "notes": "General (Column 1) duty rate. The United States has no federal import VAT; state sales/use tax is not modelled.",
+    "codeLevel": "HTS 8-digit subheading",
+    "nationalSuffixUnconfirmed": false
+  },
+  {
+    "hsCode": "61091000",
+    "description": "T-shirts, singlets, tank tops and similar garments, knitted or crocheted, of cotton",
+    "dutyRate": 0.165,
+    "vatRate": 0,
+    "source": "USITC HTS",
+    "sourceVersion": "HTS 2026 Basic Edition",
+    "sourceUrl": "https://hts.usitc.gov/",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-us-2026-11-04",
+    "notes": "General (Column 1) duty rate. The United States has no federal import VAT; state sales/use tax is not modelled.",
+    "codeLevel": "HTS 8-digit subheading",
+    "nationalSuffixUnconfirmed": false
+  },
+  {
+    "hsCode": "69072100",
+    "description": "Ceramic tiles, flagstones and similar articles, glazed, with a water absorption coefficient by weight not exceeding 0.5%",
+    "dutyRate": 0.082,
+    "vatRate": 0,
+    "source": "USITC HTS",
+    "sourceVersion": "HTS 2026 Basic Edition",
+    "sourceUrl": "https://hts.usitc.gov/",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-us-2026-11-04",
+    "notes": "General (Column 1) duty rate. The United States has no federal import VAT; state sales/use tax is not modelled.",
+    "codeLevel": "HTS 8-digit subheading",
+    "nationalSuffixUnconfirmed": false
+  }
+]

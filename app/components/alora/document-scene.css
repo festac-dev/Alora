@@ -1,0 +1,113 @@
+.al-cinema {
+  min-width: 0;
+  margin: 0;
+  position: relative;
+  border: 1px solid var(--alora-line);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      color-mix(in srgb, var(--alora-accent) 9%, transparent),
+      transparent 70%
+    ),
+    var(--alora-surface);
+  overflow: hidden;
+  border-radius: 8px;
+}
+.al-cinema-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 24px 0;
+  color: var(--alora-muted);
+  font:
+    10px/1.5 ui-monospace,
+    monospace;
+}
+.al-cinema-heading span:first-child {
+  color: var(--alora-text);
+}
+.al-cinema-heading span:last-child {
+  text-align: right;
+  max-width: 80px;
+}
+.al-cinema-stage {
+  height: 430px;
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+}
+.al-cinema-stage [data-scene-surface] {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.al-cinema-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.al-cinema-fallback strong {
+  font-size: 40px;
+  font-weight: 500;
+}
+.al-cinema-fallback p {
+  font-size: 12px;
+  color: var(--alora-muted);
+}
+.al-cinema-stage[data-render="live"] .al-cinema-fallback,
+.al-cinema-stage[data-render="static"] .al-cinema-fallback {
+  visibility: hidden;
+}
+.al-cinema-stage[data-render="fallback"] [data-scene-surface] {
+  visibility: hidden;
+}
+.al-cinema-footer {
+  margin: 0 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--alora-line);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 12px;
+}
+.al-cinema-footer > div {
+  flex: 1;
+  min-width: 0;
+}
+.al-cinema-progress {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+.al-cinema-progress i {
+  height: 2px;
+  flex: 1;
+  background: var(--alora-line);
+}
+.al-cinema-progress i[data-active="true"] {
+  background: var(--alora-accent);
+}
+@media (max-width: 760px) {
+  .al-cinema-stage {
+    height: 380px;
+  }
+}
+@media (max-width: 380px) {
+  .al-cinema-stage {
+    height: 320px;
+  }
+  .al-cinema-heading {
+    padding-inline: 16px;
+    gap: 12px;
+  }
+  .al-cinema-footer {
+    margin-inline: 16px;
+    gap: 8px;
+  }
+}

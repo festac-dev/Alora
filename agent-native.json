@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "onboarding": {
+    "firstRun": "off"
+  },
+  "doctor": {
+    "failOnBuild": false,
+    "dbToolScopingDenylist": {
+      "shipments": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "items": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "tariff_rows": "Frozen, public, cited tariff snapshots. Shared reference data, not tenant data.",
+      "agents": "Workspace-level agent roster. Shared reference data, not tenant data.",
+      "missions": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "tasks": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "claims": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "deliverables": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "approvals": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "verification_runs": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "evidence": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "ledger": "Hash chain for the whole workspace, serialized by the database ledger-head lock. Tenant scoping needs its own design; see README Hard constraints.",
+      "proposed_actions": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "courier_drafts": "Single-tenant workspace by design: no per-user row scoping yet. Add owner_email/org_id before multi-tenant use. See README Hard constraints.",
+      "alora_ledger_head": "Internal singleton lock and hash checkpoint for the single-tenant global ledger. Never user-editable; updated atomically with ledger entries."
+    }
+  }
+}

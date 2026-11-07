@@ -1,0 +1,614 @@
+@import "@fontsource-variable/inter";
+
+@import "tailwindcss";
+@import "@agent-native/toolkit/styles.css";
+
+@source "./**/*.{ts,tsx}";
+
+/* Keep success notifications readable on the toolkit's light toast surface. */
+body [data-sonner-toaster][data-sonner-theme="light"] {
+  --success-text: #007528;
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 0 0% 15%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 95%;
+  --secondary-foreground: 0 0% 15%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 43%;
+  --accent: 0 0% 95%;
+  --accent-foreground: 0 0% 15%;
+  --destructive: 0 91% 71%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 0% 40%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 97%;
+  --sidebar-foreground: 0 0% 43%;
+  --sidebar-primary: 0 0% 15%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 95%;
+  --sidebar-accent-foreground: 0 0% 15%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: 0 0% 40%;
+  --chat-sidebar-width: 17.5rem;
+  --chat-sidebar-content-inset: 0.5rem;
+  --chat-sidebar-row-padding: 0.75rem;
+  --chat-sidebar-title-fade: 1.25rem;
+}
+
+.chat-layout-shell {
+  --agent-layout-left-drawer-expanded-width: var(--chat-sidebar-width);
+  --agent-layout-left-drawer-collapsed-width: 3rem;
+  --agent-native-lower-surface: var(--agent-kit-nav-surface);
+}
+
+/* Phones get one app bar: the layout bar carries the thread title and
+   toolbar, so the AgentKit header would stack a second 48px bar. */
+@media (max-width: 47.99rem) {
+  [data-chat-header-in-app-bar="true"] .agentkit-chat-header {
+    display: none;
+  }
+}
+
+.agentkit-chat-empty-copy {
+  text-align: center;
+}
+
+.agentkit-chat-empty-copy h1 {
+  margin: 0;
+  color: hsl(var(--foreground));
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.agent-kit-chat-footer-stack {
+  /* Matches the transcript text lane (the lane minus its 1rem padding). */
+  inline-size: min(
+    100%,
+    calc(var(--agent-kit-conversation-max-width, 47rem) - 2rem)
+  );
+  margin-inline: auto;
+  pointer-events: auto;
+}
+
+.agent-kit-chat-footer-stack > .agentkit-composer-stack {
+  inline-size: 100%;
+}
+
+.agent-kit-chat-guided-question {
+  max-block-size: min(32rem, 58dvh);
+  overflow: auto;
+  margin-block-end: 0.5rem;
+  border: 1px solid var(--agentkit-border);
+  border-radius: var(--agentkit-radius);
+  background: var(--agentkit-surface);
+  box-shadow: var(--agentkit-elevation);
+}
+
+.chat-sidebar-history .an-chat-history__list {
+  padding-top: 0;
+}
+
+.chat-sidebar-history .an-chat-history__section-label {
+  padding: 8px
+    calc(var(--chat-sidebar-content-inset) + var(--chat-sidebar-row-padding))
+    5px;
+  color: hsl(var(--sidebar-foreground));
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.chat-sidebar-history.an-chat-history--rail .an-chat-history-row {
+  margin-inline: var(--chat-sidebar-content-inset);
+  border-radius: calc(var(--radius) + 2px);
+}
+
+.chat-sidebar-history.an-chat-history--rail .an-chat-history__skeleton-row {
+  min-height: 32px;
+  margin-inline: var(--chat-sidebar-content-inset);
+  padding-inline: var(--chat-sidebar-row-padding);
+}
+
+.chat-sidebar-history.an-chat-history--rail .an-chat-history-row__button {
+  min-height: 32px;
+  padding-block: 6px;
+  padding-inline: var(--chat-sidebar-row-padding);
+  color: hsl(var(--sidebar-foreground));
+}
+
+/* The ⋯ trigger sits 3px in from the row edge and is 24px wide, so it
+   reaches 15px into the title line past the row padding. */
+.chat-sidebar-history.an-chat-history--rail {
+  --an-chat-history-menu-clearance: calc(
+    1.6875rem - var(--chat-sidebar-row-padding)
+  );
+}
+
+/* Pinned rows hide their trigger until hover here, so they fade only then. */
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row--pinned:not(
+    :hover,
+    :focus-within,
+    .an-chat-history-row--menu-open
+  )
+  .an-chat-history-row__topline {
+  mask-image: none;
+}
+
+.chat-sidebar-history .an-chat-history-row__title {
+  flex: 1 1 auto;
+  color: hsl(var(--sidebar-accent-foreground));
+  font-size: 13px;
+  font-weight: 400;
+  text-overflow: clip;
+}
+
+.chat-sidebar-thread-title-shell {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.chat-sidebar-thread-title {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.chat-sidebar-thread-running {
+  color: hsl(var(--sidebar-foreground) / 0.72);
+}
+
+.chat-sidebar-thread-title[data-overflow="true"] {
+  mask-image: linear-gradient(
+    to right,
+    hsl(var(--foreground)) 0,
+    hsl(var(--foreground)) calc(100% - var(--chat-sidebar-title-fade)),
+    hsl(var(--foreground) / 0) 100%
+  );
+}
+
+.chat-sidebar-thread-title__content {
+  display: block;
+  width: max-content;
+  transform: translateX(0);
+}
+
+.an-chat-history-row:hover
+  .chat-sidebar-thread-title[data-overflow="true"]
+  .chat-sidebar-thread-title__content {
+  animation: chat-sidebar-title-reveal
+    var(--chat-sidebar-title-duration, 1800ms) ease-in-out 350ms;
+}
+
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row__menu-trigger--pinned {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row:hover
+  .an-chat-history-row__menu-trigger--pinned,
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row:focus-within
+  .an-chat-history-row__menu-trigger--pinned,
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row__menu-trigger--pinned[aria-expanded="true"] {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+@keyframes chat-sidebar-title-reveal {
+  to {
+    transform: translateX(calc(-1 * var(--chat-sidebar-title-shift, 0px)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .an-chat-history-row:hover .chat-sidebar-thread-title__content {
+    animation: none;
+  }
+}
+
+.chat-sidebar-history.an-chat-history--rail
+  .an-chat-history-row--active
+  .an-chat-history-row__button {
+  background: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-accent-foreground));
+}
+
+.dark {
+  --background: 0 0% 13%;
+  --foreground: 0 0% 90%;
+  --card: 0 0% 16.47%;
+  --card-foreground: 0 0% 90%;
+  --popover: 0 0% 15%;
+  --popover-foreground: 0 0% 90%;
+  --primary: 0 0% 75%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 90%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 18%;
+  --accent-foreground: 0 0% 90%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 24%;
+  --input: 0 0% 24%;
+  --ring: 0 0% 60%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 10%;
+  --sidebar-foreground: 0 0% 60%;
+  --sidebar-primary: 0 0% 75%;
+  --sidebar-primary-foreground: 0 0% 10%;
+  --sidebar-accent: 0 0% 16%;
+  --sidebar-accent-foreground: 0 0% 90%;
+  --sidebar-border: 0 0% 20%;
+  --sidebar-ring: 0 0% 60%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter Variable", "Inter", sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.22);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.34);
+}
+/* ---------------------------------------------------------------------------
+   Alora mission control. Scoped to .alora-root so the workspace chat UI keeps
+   its own theme. Theme-aware tokens support both modes; cinematic motion
+   is scoped to the public introduction.
+--------------------------------------------------------------------------- */
+.alora-root {
+  --alora-bg: #0b0f12;
+  --alora-surface: #12171b;
+  --alora-raised: #161d22;
+  --alora-line: #243038;
+  --alora-line-strong: #3a515c;
+  --alora-text: #e9eff3;
+  --alora-muted: #a3b1bb;
+  --alora-accent: #5fd0dd;
+  --alora-accent-ink: #062126;
+  --alora-ok: #6fcf97;
+  --alora-warn: #e0b464;
+  --alora-danger: #f07585;
+  background: var(--alora-bg);
+  color: var(--alora-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.alora-root * {
+  scrollbar-color: var(--alora-line-strong) transparent;
+  scrollbar-width: thin;
+}
+.alora-panel {
+  border: 1px solid var(--alora-line);
+  background: var(--alora-surface);
+}
+.alora-panel-hot {
+  border-color: #6a3a42;
+}
+.alora-panel-verified {
+  border-color: #2f5b46;
+}
+.alora-mono {
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-ligatures: none;
+}
+.alora-label {
+  color: var(--alora-muted);
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.alora-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--alora-line);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+.alora-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  border: 1px solid var(--alora-line-strong);
+  border-radius: 4px;
+  padding: 6px 12px;
+  background: var(--alora-raised);
+  color: var(--alora-text);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+.alora-button:hover:not(:disabled) {
+  background: #1d262c;
+  border-color: #4a6672;
+}
+.alora-button:focus-visible {
+  outline: 2px solid var(--alora-accent);
+  outline-offset: 2px;
+}
+.alora-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.alora-button-primary {
+  border-color: var(--alora-accent);
+  background: var(--alora-accent);
+  color: var(--alora-accent-ink);
+  font-weight: 600;
+}
+.alora-button-primary:hover:not(:disabled) {
+  background: #7fdee8;
+  border-color: #7fdee8;
+}
+.alora-button-danger {
+  border-color: #6a3a42;
+  background: transparent;
+  color: #f5a7b1;
+}
+.alora-button-danger:hover:not(:disabled) {
+  border-color: var(--alora-danger);
+  background: #1d1216;
+}
+.alora-button-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--alora-muted);
+}
+.alora-button-ghost:hover:not(:disabled) {
+  background: var(--alora-raised);
+  color: var(--alora-text);
+}
+.alora-busy {
+  color: var(--alora-muted);
+  font-size: 11px;
+}
+.alora-nav-item {
+  display: flex;
+  width: 100%;
+  min-height: 40px;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-left: 2px solid transparent;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--alora-muted);
+  font-family: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+}
+.alora-nav-item:hover {
+  background: var(--alora-raised);
+  color: var(--alora-text);
+}
+.alora-nav-item[data-active="true"] {
+  border-left-color: var(--alora-accent);
+  background: #131c20;
+  color: var(--alora-accent);
+}
+.alora-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.alora-table th {
+  border-bottom: 1px solid var(--alora-line);
+  padding: 8px 10px;
+  color: var(--alora-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.alora-table td {
+  border-bottom: 1px solid #1b2429;
+  padding: 9px 10px;
+  vertical-align: top;
+}
+.alora-table tr:last-child td {
+  border-bottom: 0;
+}
+.alora-input {
+  width: 100%;
+  border: 1px solid var(--alora-line);
+  border-radius: 4px;
+  background: #0d1215;
+  padding: 8px 10px;
+  color: var(--alora-text);
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+.alora-input:focus {
+  border-color: var(--alora-accent);
+}
+.alora-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--alora-line);
+  border-left-width: 2px;
+  border-left-color: var(--alora-accent);
+  border-radius: 4px;
+  background: var(--alora-surface);
+  padding: 8px 12px;
+}
+.alora-notice-warn {
+  border-left-color: var(--alora-warn);
+}
+.alora-notice-danger {
+  border-left-color: var(--alora-danger);
+}
+.alora-notice-ok {
+  border-left-color: var(--alora-ok);
+}
+.alora-tour-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  background: rgba(4, 7, 9, 0.72);
+  padding: 16px;
+}
+.alora-tour {
+  width: min(100%, 440px);
+  border: 1px solid var(--alora-line-strong);
+  border-radius: 6px;
+  background: var(--alora-raised);
+  padding: 20px;
+}
+@media (max-width: 47.99rem) {
+  .alora-control-nav .alora-nav-item {
+    width: auto;
+    padding-inline: 14px;
+  }
+  .alora-button,
+  .alora-nav-item {
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alora-root *,
+  .alora-root *::before,
+  .alora-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Public and operational surfaces share one persisted theme selection. */
+:root:not(.dark) .alora-root {
+  --alora-bg: #f0f5f6;
+  --alora-surface: #ffffff;
+  --alora-raised: #e3edef;
+  --alora-line: #c8d9dd;
+  --alora-line-strong: #9bb9c1;
+  --alora-text: #15323c;
+  --alora-muted: #496973;
+  --alora-accent: #086b7a;
+  --alora-accent-ink: #ffffff;
+  --alora-ok: #22683f;
+  --alora-warn: #86550f;
+  --alora-danger: #b22b45;
+}
+.alora-button:hover:not(:disabled):not(.alora-button-primary):not(
+    .alora-button-danger
+  ) {
+  background: var(--alora-raised);
+  border-color: var(--alora-line-strong);
+}
+.alora-button-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--alora-accent) 85%, var(--alora-text));
+  border-color: var(--alora-accent);
+}
+.alora-button-danger {
+  color: var(--alora-danger);
+  border-color: color-mix(in srgb, var(--alora-danger) 50%, var(--alora-line));
+}
+.alora-button-danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--alora-danger) 8%, var(--alora-surface));
+}
+.alora-nav-item[data-active="true"] {
+  background: var(--alora-raised);
+}
+.alora-table td {
+  border-bottom-color: var(--alora-line);
+}
+.alora-input {
+  background: var(--alora-bg);
+}
+.alora-theme-toggle {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  flex-shrink: 0;
+}
+.alora-theme-toggle[aria-pressed="true"] {
+  border-color: var(--alora-accent);
+}
+:root:not(.dark) .al-brand img,
+:root:not(.dark) .alora-control-header img {
+  filter: brightness(0.5) saturate(1.6);
+}
+@media (max-width: 760px) {
+  .alora-agent-label {
+    display: none;
+  }
+  .al-nav nav {
+    gap: 8px;
+  }
+  .alora-site .alora-theme-toggle {
+    padding-inline: 12px;
+  }
+  .alora-control-header {
+    gap: 8px;
+  }
+  .alora-control-header .alora-button {
+    padding-inline: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .alora-root:not(.alora-site) .alora-panel {
+    animation: alora-panel-enter 350ms cubic-bezier(.16,1,.3,1) both;
+  }
+}
+@keyframes alora-panel-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}

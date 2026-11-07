@@ -1,0 +1,47 @@
+[
+  {
+    "hsCode": "85176200",
+    "description": "Machines for the reception, conversion and transmission or regeneration of voice, images or other data, including switching and routing apparatus",
+    "dutyRate": 0.05,
+    "vatRate": 0.05,
+    "source": "Dubai Customs / UAE Federal Tax Authority",
+    "sourceVersion": "GCC tariff 2026 snapshot",
+    "sourceUrl": "https://www.dubaicustoms.gov.ae/en/Tariff/Pages/default.aspx",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-ae-2026-11-04",
+    "notes": "GCC 8-digit HS base. UAE national 12-digit suffix and any product-specific restriction must be confirmed in the Dubai Customs system before declaration. UAE VAT standard rate 5%.",
+    "codeLevel": "GCC/HS 8-digit base",
+    "nationalSuffixUnconfirmed": true
+  },
+  {
+    "hsCode": "61091000",
+    "description": "T-shirts, singlets and other vests, of cotton, knitted or crocheted",
+    "dutyRate": 0.05,
+    "vatRate": 0.05,
+    "source": "Dubai Customs / UAE Federal Tax Authority",
+    "sourceVersion": "GCC tariff 2026 snapshot",
+    "sourceUrl": "https://www.dubaicustoms.gov.ae/en/Tariff/Pages/default.aspx",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-ae-2026-11-04",
+    "notes": "GCC 8-digit HS base. UAE national 12-digit suffix and any product-specific restriction must be confirmed in the Dubai Customs system before declaration. UAE VAT standard rate 5%.",
+    "codeLevel": "GCC/HS 8-digit base",
+    "nationalSuffixUnconfirmed": true
+  },
+  {
+    "hsCode": "69072100",
+    "description": "Ceramic tiles, flagstones and similar articles, glazed, with a water absorption coefficient by weight not exceeding 0.5%",
+    "dutyRate": 0.05,
+    "vatRate": 0.05,
+    "source": "Dubai Customs / UAE Federal Tax Authority",
+    "sourceVersion": "GCC tariff 2026 snapshot",
+    "sourceUrl": "https://www.dubaicustoms.gov.ae/en/Tariff/Pages/default.aspx",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-ae-2026-11-04",
+    "notes": "GCC 8-digit HS base. UAE national 12-digit suffix and any product-specific restriction must be confirmed in the Dubai Customs system before declaration. UAE VAT standard rate 5%.",
+    "codeLevel": "GCC/HS 8-digit base",
+    "nationalSuffixUnconfirmed": true
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "hsCode": "85176200",
+    "description": "Machines for the reception, conversion and transmission or regeneration of voice, images or other data, including switching and routing apparatus",
+    "dutyRate": 0,
+    "vatRate": 0.19,
+    "source": "EU TARIC",
+    "sourceVersion": "TARIC 2026-01-01",
+    "sourceUrl": "https://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-de-2026-11-04",
+    "notes": "Third-country MFN duty. German import VAT standard rate from EU VAT rates table.",
+    "codeLevel": "EU CN 8-digit",
+    "nationalSuffixUnconfirmed": false
+  },
+  {
+    "hsCode": "61091000",
+    "description": "T-shirts, singlets and other vests, of cotton, knitted or crocheted",
+    "dutyRate": 0.12,
+    "vatRate": 0.19,
+    "source": "EU TARIC",
+    "sourceVersion": "TARIC 2026-01-01",
+    "sourceUrl": "https://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-de-2026-11-04",
+    "notes": "Third-country MFN duty. German import VAT standard rate from EU VAT rates table.",
+    "codeLevel": "EU CN 8-digit",
+    "nationalSuffixUnconfirmed": false
+  },
+  {
+    "hsCode": "69072100",
+    "description": "Ceramic tiles, flagstones and similar articles, glazed, with a water absorption coefficient by weight not exceeding 0.5%",
+    "dutyRate": 0.05,
+    "vatRate": 0.19,
+    "source": "EU TARIC",
+    "sourceVersion": "TARIC 2026-01-01",
+    "sourceUrl": "https://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en",
+    "effectiveFrom": "2026-01-01",
+    "fetchedAt": "2026-11-04",
+    "datasetVersion": "alora-de-2026-11-04",
+    "notes": "Third-country MFN duty. German import VAT standard rate from EU VAT rates table.",
+    "codeLevel": "EU CN 8-digit",
+    "nationalSuffixUnconfirmed": false
+  }
+]
